@@ -1,0 +1,9 @@
+Copyright (C) 2014, David Bjanes, University of Pittsburgh.
+
+The HSST Software Package is distributed under the terms of the GNU General Public License. Any user has unrestricted access to  change,  modify,  add,  or  remove  the  source  code  in  whole  or  in  part.  The  user  has  full permission  to  redistribute  their  version  of  the  code,  provided  said  redistribution  refers  to  the initial distribution location and author, David Bjanes. Under no circumstances can a redistribution of this software (either in whole or any part) be sold, be bundled with closed-source software or any other software distributed with another license  other  than  the  GPL  license. 
+
+All use of this software is subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the software.
+
+THE HSST SOFTWARE PACKAGE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
