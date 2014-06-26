@@ -559,7 +559,7 @@ classdef gui < handle
                 % Organize Waveforms Lines & PCA points, Update GUI on
                 % colors and graphing order
                 
-                [this.unitIDs, ~] = unique_2011b(curSortCode);
+                [this.unitIDs, ~] = unique(curSortCode);
                 this.unitLabels = [];   
                 this.unitFormat = {};
 

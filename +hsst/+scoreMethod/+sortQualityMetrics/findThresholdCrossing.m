@@ -23,8 +23,8 @@ function [pos_threshold, th_value, th_pnt] = findThresholdCrossing(wf)
         
     else
         pos_threshold = [];
-        th_pnt = [];
-        th_value = [];
+        th_pnt = 1;
+        th_value = wf(1,1);
     
     end
     

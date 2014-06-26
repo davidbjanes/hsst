@@ -30,6 +30,12 @@ function [ property ] = runExampleCode()
                                                      sortParameters);
     fprintf('The optimal parameter for sorting with ''%s'', is: %d. \n', class(sortMethodObj), parameter);   
     
+    
+    %% Get Unit Information
+    param_ind = cellfun(@isequal, repmat({parameter}, [1 property.num_sortCodes]), property.sortParameterList);
+    property.sortScoreObjList{param_ind}.noise_units
+    property.sortScoreObjList{param_ind}.undersorted_units                       
+    property.sortScoreObjList{param_ind}.oversorted_units
         
 end
 
