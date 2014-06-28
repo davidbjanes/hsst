@@ -28,6 +28,10 @@ function [ sort_IDs, parameter, property ] = sortSnips( snippets, time_stamps, s
     % but there is only one option so far)
     scoreMethodList = hsst.getScoreMethods();
     scoreMethodObj = scoreMethodList{2};
+    
+    % OR
+    
+    scoreMethodObj = hsst.scoreMethod.sortQualityClass;
 
     
     %% Check SortMethodObj is correct class type

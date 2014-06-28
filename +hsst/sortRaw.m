@@ -31,6 +31,10 @@ function [ sort_IDs, parameter, property ] = sortRaw( rawWaveform, sample_freq, 
     extractorMethodList = hsst.getExtractorMethods();
     extractorMethodObj = extractorMethodList{1};
     
+    % OR
+    
+    extractorMethodObj = hsst.extractorMethod.thresholding;
+    
     
     %% Check extractorMethodObj is correct class type (if it was an input)
     [ boolean_output, message ] = hsst.isObjectExtractorMethod( extractorMethodObj );

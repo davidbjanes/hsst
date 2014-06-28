@@ -1,11 +1,10 @@
-hsst
-====
+Heuristic Spike Sort Tuner Readme
 
-Heuristic Spike Sort Tuner
+Novel paradigm for optimal parameter selection of a generic spike sorting algorithm.  Full code base written for Matlab 2013a is available here.
 
-Novel paradigm for optimal parameter selection of a generic spike sorting algorithm.  Full code base for Matlab 2013a is available here.
+Full documentation, along with the poster and thesis manuscript is available at www.davidbjanes.com/projects
 
-Full documentation along with the poster and thesis manuscript will be available shortly.  Questions, comments or issues can be sent to public@davidbjanes.com. 
+Data used in the poster, thesis, and subsequent paper (to be published in fall of 2014) maybe requested from the author at the following email: public@davidbjanes.com.  Please refer to the HSST project in the email subject.
 
 Thank you!
 
