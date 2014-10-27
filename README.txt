@@ -3,7 +3,7 @@ Heuristic Spike Sort Tuner Readme
 Novel paradigm for optimal parameter selection of a generic spike sorting algorithm.  Full code base written for Matlab 2013a is available here. Full documentation along with a getting started guide is in the HSST Manual.pdf.
 
 Developed by RNEL (Rehab Neural Engineering Lab)
-LAB URL: http://w3.rnelab.com/
+Project Home Page: http://w3.rnelab.com/project/heuristic-spike-sorting-tuner
 
 Additional documentation, including a poster and thesis manuscript is available at www.davidbjanes.com/projects.html
 
