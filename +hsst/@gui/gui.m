@@ -473,10 +473,10 @@ classdef gui < handle
             set(gca, 'XColor', this.DEFAULT_FORGND_COLOR);
             set(gca, 'YColor', this.DEFAULT_FORGND_COLOR);
             
-            [~, score{1}] = princomp(wf');
+            [~, score{1}] = pca(wf');
             PCA_2D_point_X = repmat(score{1}(:,1)', 2, 1);    
             PCA_2D_point_Y = repmat(score{1}(:,2)', 2, 1); 
-            pca_handles = line(PCA_2D_point_X, PCA_2D_point_Y, 'LineStyle', '*');
+            pca_handles = line(PCA_2D_point_X, PCA_2D_point_Y, 'LineStyle', 'none', 'Marker', '*');
                        
             
             % Update Existing SpikeDataObject (from database) ListBox            
@@ -550,8 +550,8 @@ classdef gui < handle
             else
             
                 % Local Temp Variables
-                curSortCode = this.curSortCode;
-                curSortScore = this.curSortScore;
+                temp_curSortCode = this.curSortCode;
+                temp_curSortScore = this.curSortScore;
 %                 figure(this.fig_handle);
 %                 gcf = this.fig_handle;
                 
@@ -559,7 +559,7 @@ classdef gui < handle
                 % Organize Waveforms Lines & PCA points, Update GUI on
                 % colors and graphing order
                 
-                [this.unitIDs, ~] = unique(curSortCode);
+                [this.unitIDs, ~] = unique(temp_curSortCode);
                 this.unitLabels = [];   
                 this.unitFormat = {};
 
@@ -572,10 +572,10 @@ classdef gui < handle
                     this.unitFormat{i} = strcat(this.COLORS(1+rem(i, numel(this.COLORS))), ...
                                              this.SYMBOLS(1+rem(3*i, numel(this.SYMBOLS))));
                     
-                    set(this.h_wf(curSortCode == unit_Id), 'Color', this.unitFormat{i}(1), ...
+                    set(this.h_wf(temp_curSortCode == unit_Id), 'Color', this.unitFormat{i}(1), ...
                                                        'Visible', 'on');
-                    set(this.h_pca(curSortCode == unit_Id), 'Color', this.unitFormat{i}(1), ...
-                                                        'LineStyle', this.unitFormat{i}(2:end));
+                    set(this.h_pca(temp_curSortCode == unit_Id), 'Color', this.unitFormat{i}(1), ...
+                                                        'Marker', this.unitFormat{i}(2:end));
 
                     uistack(this.h_wf(this.curSortCode == unit_Id), 'bottom');
                     uistack(this.h_pca(this.curSortCode == unit_Id), 'bottom');
@@ -595,7 +595,7 @@ classdef gui < handle
                     this.unitLabels = [this.unitLabels; {strcat('Unit: ', num2str(unit_Id))}];
                     
                     text_handle(i) = text(0.95-((i-1)*textspace), 0.99, ...
-                                          sprintf('%s\n%d', this.unitLabels{i}, curSortScore.num_wf(i)), ...
+                                          sprintf('%s\n%d', this.unitLabels{i}, temp_curSortScore.num_wf(i)), ...
                                           'Color',           this.unitFormat{i}(1), ...
                                           'HorizontalAlign', 'center', ...
                                           'VerticalAlign',   'top',    ...
@@ -603,7 +603,7 @@ classdef gui < handle
                                           'Units',           'normalized' ...
                                           );
                                       
-                    set(text_handle(i), 'ButtonDownFcn', @sortQualityEvalGUI.unitVisiblity_CB);
+                    set(text_handle(i), 'ButtonDownFcn', @this.unitVisiblity_CB);
                     set(text_handle(i), 'UserData', i);
                 end
                 if ishandle(this.h_text_wf)
@@ -684,9 +684,6 @@ classdef gui < handle
                 patch([0 0], [0 0], this.colormapping(x, :));
             end
 
-            h_legend = legend(legend_str, 'Location','NorthEastOutside');
-            set(h_legend,'FontSize',8);
-
             gap = 0.1;
             score_matrix = fliplr(score_matrix);
             for x = 1:size(score_matrix,1)
@@ -710,6 +707,8 @@ classdef gui < handle
             set(gca, 'YTickLabel', [fliplr(y_axis_labels)])
             set(gca, 'XTickLabel', {''})
             
+            h_legend = legend(legend_str, 'Location','NorthEastOutside');
+            set(h_legend,'FontSize',8);
         end
         
         % Updates ISI and Current Sort Quality of Selected Unit plots
@@ -750,7 +749,7 @@ classdef gui < handle
         % Groups Units together to create new Sort Code
         function groupUnitIDs(this)
             
-            curSortCode = this.curSortCode;
+            temp_curSortCode = this.curSortCode;
             
             selected_units_ind = this.selected_units_unitListBox;
             
@@ -758,8 +757,8 @@ classdef gui < handle
             
             for unit_index = this.selected_units_unitListBox(2:end),
                 unit = this.unitIDs(unit_index);
-                indices = curSortCode == unit;
-                curSortCode(indices) = base_unit;
+                indices = temp_curSortCode == unit;
+                temp_curSortCode(indices) = base_unit;
             end
             this.unitLabels(selected_units_ind(2:end)) = [];
             this.unitFormat(selected_units_ind(2:end)) = [];
@@ -767,21 +766,21 @@ classdef gui < handle
             this.setListBoxSelection(selected_units_ind(1));
            
             import sqm.scoreMethod.*
-            [scoreObject] = sortQualityClass(curSortCode, ...
+            [scoreObject] = sortQualityClass(temp_curSortCode, ...
                                  this.sortList(this.cur_index).wf, ...
                                  this.sortList(this.cur_index).ts, ...
                                  this.sortList(this.cur_index).noise_est, ...
                                  'normalize_num_wf', true);
                                                            
             this.curSortScore = scoreObject;
-            this.curSortCode = curSortCode;
+            this.curSortCode = temp_curSortCode;
         end
         
         % Updates Unit Waveform Visiblity
         function updateUnitVisibility(this, k)
             
             unit_Id = this.unitIDs(k);
-            curSortCode = this.curSortCode;
+            temp_curSortCode = this.curSortCode;
             
             if strcmpi(this.unitVisibility{k}, 'on')
                 this.unitVisibility{k} = 'off';
@@ -791,7 +790,7 @@ classdef gui < handle
                 set(this.h_text_wf(k), 'Color', this.unitFormat{k}(1));
             end
             
-            set(this.h_wf(curSortCode == unit_Id), 'Visible', this.unitVisibility{k});
+            set(this.h_wf(temp_curSortCode == unit_Id), 'Visible', this.unitVisibility{k});
 %             set(this.unitHGGroup_WF(k), 'Visible', this.unitVisibility{k});
 
         end
@@ -1027,10 +1026,9 @@ classdef gui < handle
             
             obj = getappdata(gcbf, 'obj');
             
-            obj.selected_metric_index = str2int(get(button_handle, 'String'));
+            obj.selected_metric_index = str2double(get(button_handle, 'String'));
             
-clc
-updateSortQuality_PLOTS(obj);
+            updateSortQuality_PLOTS(obj);
 
         end
         

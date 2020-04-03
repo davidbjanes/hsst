@@ -31,7 +31,7 @@ function [ sort_IDs, parameter, property ] = sortSnips( snippets, time_stamps, s
     
     % OR
     
-    scoreMethodObj = hsst.scoreMethod.sortQualityClass;
+    scoreMethodObj = hsst.scoreMethod.sortQualityClass.empty;
 
     
     %% Check SortMethodObj is correct class type

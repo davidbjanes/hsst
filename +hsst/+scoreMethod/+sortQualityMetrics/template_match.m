@@ -164,9 +164,9 @@ classdef template_match < hsst.scoreMethod.sortQualityMetrics.metric
                     set(pnts_handle(n), 'userdata', userdata );
                     
                     if bimodal_array(n),
-                        set(pnts_handle(n), 'color', 'r', 'lineStyle', '*', 'linewidth', 2);
+                        set(pnts_handle(n), 'color', 'r', 'marker', '*', 'linewidth', 2);
                     else
-                        set(pnts_handle(n), 'color', 'g', 'lineStyle', '*');
+                        set(pnts_handle(n), 'color', 'g', 'marker', '*');
                     end                   
                 end
                 
