@@ -6,10 +6,11 @@ function [ snips, time_stamps, property ] = getSnippets( rawWaveform, sample_fre
     window_align = round(window_size/3);
     
     % Estimate Threshold from raw waveform if none is set
-    noise_estimate = hsst.extractorMethod.thresholding.getNoiseEstimate( rawWaveform, sample_freq );
-    if nargin < 3 | isempty(threshold),
+    noise_estimate = [];
+    if nargin < 3 || isempty(threshold),
+        noise_estimate = hsst.extractorMethod.thresholding.getNoiseEstimate( rawWaveform, sample_freq );
         threshold = noise_estimate;
-    end    
+    end
     
     %% Code
     
