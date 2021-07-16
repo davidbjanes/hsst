@@ -8,7 +8,7 @@ function [ sort_IDs, parameter, property ] = sortSnips( snippets, time_stamps, s
 %   2 : Uses HSST to determing optimal parameter setting and returns output
 %
 % INPUTS
-%   snippets        (NxD) : waveform snippets
+%   snippets        (DxN) : waveform snippets
 %   time_stamps     (1xN) : vector of time stamps 
 %   sample_freq     (1x1) : sampling frequency (Hz)
 %   noise_estimate  (1x1) : estimate of noise floor (same units as snippets)

@@ -58,7 +58,7 @@ classdef KMeans < hsst.sorter
                 chosen_indices(next_index) = 1;
             end
 
-            [COEFF, score] = princomp(wf);
+            [COEFF, score] = pca(wf);
             mean_waveform = mean(wf);
     
             low_d = score(chosen_indices, :);

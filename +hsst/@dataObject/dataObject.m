@@ -285,7 +285,7 @@ classdef dataObject < handle
                 ylabel('PC 2');
                 title(PCA_Title);
             
-            [coeff{1}, score{1}] = princomp(wf);
+            [coeff{1}, score{1}] = pca(wf);
             PCA_2D_point_1 = score{1}(:,1);
             PCA_2D_point_2 = score{1}(:,2);
 

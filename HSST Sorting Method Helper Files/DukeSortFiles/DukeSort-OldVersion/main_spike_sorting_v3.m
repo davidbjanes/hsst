@@ -76,7 +76,7 @@ numgroup=1;
 for mm=1:1
         dataXX=datass_test{mm};
         dataXX=XX;
-        [coeff{mm},score{mm}]=princomp(dataXX.');
+        [coeff{mm},score{mm}]=pca(dataXX.');
         point=[score{mm}(:,1),score{mm}(:,2),score{mm}(:,3)];
         z=datacc{mm};
         Point=[score{mm}(:,1),score{mm}(:,2)];
@@ -128,7 +128,7 @@ clear dataxx coeff score
      for mm=1:numgroup
         dataxx(:,:,mm)=ec_spikes(mm,:,:);
         dataXX=reshape(dataxx(:,:,mm),size(dataxx,1),size(dataxx,2));
-        [coeff{mm},score{mm}]=princomp(dataXX.');
+        [coeff{mm},score{mm}]=pca(dataXX.');
         point=[score{mm}(:,1),score{mm}(:,2)];
         figure;plot(score{mm}(:,1),score{mm}(:,2),'o');
 %         z=label+4;

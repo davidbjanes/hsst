@@ -31,7 +31,7 @@ classdef MATLAB_KMeans_PCA < hsst.sorter
                        
             %% PCA Decomp
             
-            [coeff{1}, score{1}] = princomp(wf);
+            [coeff{1}, score{1}] = pca(wf);
             PCA_2D_point = score{1}(:,1:2);
             PCA_3D_point = score{1}(:,1:3);
             PCA_10D_point = score{1}(:,1:10);
@@ -58,7 +58,7 @@ classdef MATLAB_KMeans_PCA < hsst.sorter
 %                 chosen_indices(next_index) = 1;
 %             end
 % 
-%             [COEFF, score] = princomp(est_mu_wf);
+%             [COEFF, score] = pca(est_mu_wf);
 %             mean_waveform = mean(est_mu_wf);
 %     
 %             low_d = score(chosen_indices, :);

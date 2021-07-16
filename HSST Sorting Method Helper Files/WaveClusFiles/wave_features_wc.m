@@ -41,7 +41,7 @@ switch feature
         [max ind]=sort(sd);
         coeff(1:inputs)=ind(ls:-1:ls-inputs+1);
     case 'pca'
-        [C,S,L] = princomp(spikes);
+        [C,S,L] = pca(spikes);
         cc = S;
         inputs = 3; 
         coeff(1:3)=[1 2 3];

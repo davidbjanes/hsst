@@ -48,7 +48,7 @@ classdef MATLAB_KMeans < hsst.sorter
 %                 chosen_indices(next_index) = 1;
 %             end
 % 
-%             [COEFF, score] = princomp(est_mu_wf);
+%             [COEFF, score] = pca(est_mu_wf);
 %             mean_waveform = mean(est_mu_wf);
 %     
 %             low_d = score(chosen_indices, :);
