@@ -27,7 +27,7 @@ classdef MATLAB_GMM_PCA < hsst.sorter
             
             %% PCA Decomp
             
-            [coeff{1}, score{1}] = princomp(wf);
+            [coeff{1}, score{1}] = pca(wf);
             PCA_2D_point = score{1}(:,1:2);
             PCA_3D_point = score{1}(:,1:3);
             PCA_10D_point = score{1}(:,1:10);
